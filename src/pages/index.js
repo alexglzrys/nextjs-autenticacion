@@ -34,7 +34,19 @@ export default function Home({ user }) {
 
 export const getServerSideProps = async (context) => {
   // Recuperar información almacenada en la Sessión desde el Backend
+  // Recuperar la sessión desde el Backend evita que se vea por completo el contenido interno de la página
+  // Si recuperarmos la sessión dede el Frontend, es posible que se visualice por un momento parte del contenido de la página (skeleton o información sensible) y luego redireccione
   const session = await getSession(context);
+
+  // En caso de no existir la sessión, redireccionamos a otra página
+  if (!session) return {
+    redirect: {
+      destination: '/login',
+      permanent: false
+    }
+  }
+
+  // Si todo es correcto hidrato la página con la información de la sessión
   return {
     props: {
       user: session.user,
