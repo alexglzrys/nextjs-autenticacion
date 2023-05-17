@@ -1,8 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 
 export default function Home({ user }) {
+  
+  const handlerLogout = async(e) => {
+    // Next Auth cuenta con funciones preconstruidas para realizar diferentes acciones relacionadas con la autenticación
+    // Sin que sea necesario lanzar peticiones HTTP a su respectiva Rest API
+    await signOut()
+  }
+
   return (
     <>
       <Head>
@@ -12,7 +19,8 @@ export default function Home({ user }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <header>
+        <header className="header">
+          <button className="logout" onClick={handlerLogout}>Cerrar Sesión</button>
           <figure className="avatar">
             <Image
               src={user.image}

@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
 .avatar__image {
   display: block;
@@ -20,4 +21,25 @@
 .avatar__email {
   margin: 0;
   font-size: .8rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logout, .login {
+  all: unset;
+  background-color: deeppink;
+  color: white;
+  padding: .5rem 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.login {
+  background-color: rgb(37, 40, 40);
+  display: ;
 }
